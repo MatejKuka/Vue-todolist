@@ -1,6 +1,7 @@
 <template>
   <div class="bodyclass">
     <HeaderTodo title="Todo List Tracker"/>
+    <TaskForm @create-task="createTask"/>
     <TasksList @delete-task="deleteTask" :tasks="tasks"/>
   </div>
 </template>
@@ -8,15 +9,20 @@
 <script>
 import HeaderTodo from "./components/UI/Header";
 import TasksList from "./components/tasks/Tasks";
+import TaskForm from "./components/tasks/NewTaskForm";
 
 export default {
   name: 'App',
   components: {
     HeaderTodo,
     TasksList,
+    TaskForm
   },
   methods: {
-    deleteTask(id){
+    createTask(newTask) {
+      this.tasks.push(newTask);
+    },
+    deleteTask(id) {
       this.tasks = this.tasks.filter((task) => task.id !== id);
     }
   },
@@ -60,5 +66,7 @@ export default {
   background: burlywood;
   padding: 0.6rem;
   border-radius: 10px;
+  max-width: 700px;
+  margin: auto;
 }
 </style>
