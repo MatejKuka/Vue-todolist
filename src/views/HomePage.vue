@@ -1,5 +1,5 @@
 <template>
-<h3>Homepage</h3>
+<h2>Todo list</h2>
   <TaskForm @create-task="createTask"/>
   <TasksList @delete-task="deleteTask" :tasks="tasks"/>
 </template>
