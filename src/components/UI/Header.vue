@@ -2,8 +2,8 @@
   <header>
     <h1>{{ title }}</h1>
     <div>
-      <button><a href="/deleted-todos">Deleted Todos page</a></button>
-      <button><a href="/">Todos page</a></button>
+      <button @click="$router.push('/deleted-todos')">Deleted Todos page</button>
+      <button @click="$router.push('/')">Todos page</button>
     </div>
   </header>
 </template>
