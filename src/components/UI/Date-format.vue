@@ -1,12 +1,12 @@
 <template>
-  <p>{{new Intl.DateTimeFormat("en-US").format(date)}}</p>
+  <p>{{new Intl.DateTimeFormat("en-US").format(new Date(date))}}</p>
 </template>
 
 <script>
 export default {
   name: "DateFormat",
   props: {
-    date: Date,
+    date: String
   }
 }
 </script>

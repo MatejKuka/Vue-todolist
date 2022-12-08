@@ -1,6 +1,5 @@
 <template>
   <h1>Deleted Todos: </h1>
-  <p>test</p>
   <TasksList :tasks="deletedTasks" />
 </template>
 
@@ -17,13 +16,8 @@ export default {
       deletedTasks: []
     }
   },
-  mounted() {
-    this.deletedTasks = JSON.parse(
-        localStorage.getItem("deletedTasks") || "[]"
-    )
-    console.log(JSON.parse(
-        localStorage.getItem("deletedTasks") || "[]"
-    ))
+  created() {
+    this.deletedTasks = JSON.parse(localStorage.getItem("deletedTasks") || "[]")
   }
 }
 </script>

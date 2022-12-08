@@ -17,13 +17,14 @@ export default {
   methods: {
     createTask(newTask) {
       this.tasks.push(newTask);
+      localStorage["tasks"] = JSON.stringify(this.tasks)
     },
     deleteTask(id) {
       const task = this.tasks.find(task => task.id === id);
       this.deletedTasks.push(task);
-      localStorage.removeItem("deletedTasks");
-      localStorage.setItem("deletedTasks", JSON.stringify(this.deletedTasks));
       this.tasks = this.tasks.filter((task) => task.id !== id);
+      localStorage["deletedTasks"] = JSON.stringify(this.deletedTasks)
+      localStorage["tasks"] = JSON.stringify(this.tasks);
     }
   },
   data() {
@@ -33,23 +34,7 @@ export default {
     }
   },
   created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: "Doctors Appointment",
-        day: new Date(2022, 12, 19),
-      },
-      {
-        id: 2,
-        text: "Meeting with boss",
-        day: new Date(2022, 12, 24),
-      },
-      {
-        id: 3,
-        text: "Food shopping",
-        day: new Date(2022, 12, 5),
-      }
-    ]
+    this.tasks = JSON.parse(localStorage["tasks"] || "[]")
   }
 }
 </script>
