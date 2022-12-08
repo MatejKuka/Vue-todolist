@@ -11,34 +11,18 @@ export default {
   components: {
     TasksList,
   },
-  methods: {
-    addDeletedTask(taskToDelete){
-      this.deletedTasks.push(taskToDelete);
-    }
-  },
   data() {
     return {
       deletedTasks: []
     }
   },
-  created() {
-    this.deletedTasks = [
-      {
-        id: 8,
-        text: "This is deleted task n.1",
-        day: new Date(2022, 2, 14)
-      },
-      {
-        id: 12,
-        text: "This is deleted task n.2",
-        day: new Date(2022, 2, 14)
-      },
-      {
-        id: 10,
-        text: "This is deleted task n.3",
-        day: new Date(2022, 2, 14)
-      },
-    ]
+  mounted() {
+    this.deletedTasks = JSON.parse(
+        localStorage.getItem("deletedTasks") || "[]"
+    )
+    console.log(JSON.parse(
+        localStorage.getItem("deletedTasks") || "[]"
+    ))
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-<h2>Todo list</h2>
+  <h2>Todo list</h2>
   <TaskForm @create-task="createTask"/>
   <TasksList @delete-task="deleteTask" :tasks="tasks"/>
 </template>
@@ -19,12 +19,17 @@ export default {
       this.tasks.push(newTask);
     },
     deleteTask(id) {
+      const task = this.tasks.find(task => task.id === id);
+      this.deletedTasks.push(task);
+      localStorage.removeItem("deletedTasks");
+      localStorage.setItem("deletedTasks", JSON.stringify(this.deletedTasks));
       this.tasks = this.tasks.filter((task) => task.id !== id);
     }
   },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      deletedTasks: []
     }
   },
   created() {
