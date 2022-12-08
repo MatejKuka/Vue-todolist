@@ -1,5 +1,6 @@
 <template>
   <h1>Deleted Todos: </h1>
+  <p>test</p>
   <TasksList :tasks="deletedTasks" />
 </template>
 
